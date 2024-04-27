@@ -39,6 +39,22 @@ router.get("/home/:filename",function(req,res){
   res.redirect('/')
 });
 
+router.get('/edit/:filename', function(req,res){
+  const fn = req.params.filename
+ fs.readFile(`./files/${fn}`, function(err,data){
+  if(err) return res.send(err);
+  else res.render('edit',{filename:fn,content:data});
+ })
+});
+router.post('/edit/:filename', function(req,res){
+  const fn = req.params.filename
+  const data = req.body.content
+ fs.writeFile(`./files/${fn}`,data, "utf-8" ,function(err){
+  if(err) return res.send(err);
+  else res.redirect('/');
+ })
+});
+
 
 
 router.get("/delete/:filename",function(req,res){
@@ -47,5 +63,7 @@ router.get("/delete/:filename",function(req,res){
     else res.redirect('/')
   });
 });
+
+
 
 module.exports = router;

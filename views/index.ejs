@@ -24,10 +24,13 @@
         <% } else{ %>
                <%= file.content %>
           <% } %></p>
+<div class="w-full flex gap-6">
 
-         <a href="/read/<%= file.name%>" class="text-blue-500 mt-5 inline-block"> Read more</a>
-         <a href="/delete/<%= file.name%>" class="text-red-500 ml-9 gap-4 mt-5 inline-block">Delete</a>
-        </div> 
+  <a href="/read/<%= file.name%>" class="text-blue-500 mt-5 inline-block"> Read more</a>
+  <a href="/edit/<%= file.name%>" class="text-yellow-500  gap-4 mt-5 inline-block">edit</a>
+  <a href="/delete/<%= file.name%>" class="text-red-500  gap-4 mt-5 inline-block">Delete</a>
+ </div> 
+</div>
      <% }) %>
    <% } else{ %>
     <h3 class="text-xl text-white">No tasks yet</h3>
